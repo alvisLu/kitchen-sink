@@ -1,202 +1,511 @@
-<!-- $theme: gaia -->
+@title[Introduction]
+## The Kitchen Sink
+##### <span style="font-family:Helvetica Neue; font-weight:bold">A <span style="color:#e49436">Git</span>Pitch Feature Tour</span>
 
-# 新電源報告
+---
+@title[Theme Switcher]
 
-##### [Mapacode INC](mapacode.tw)
+## Slideshow Theme Switcher
+<span style="font-size:0.6em; color:gray">Available inside burger-menu.</span> |
+<span style="font-size:0.6em; color:gray">Start switching themes right now!</span>
 
-###### Software Engineer: Alvis Lu
+---
+@title[Go Fullscreen]
+
+## Tip!
+For the *best viewing experience*   
+press **F** key to go fullscreen.
 
 ---
 
-### 新增參數
-#### 在表格上
+## Markdown Slides
+<span style="font-size:0.6em; color:gray">Press Down key for details.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Slide-Markdown) for details.</span>
 
-- VW, DVw, STD, SFA, SFB, IG
-- SD, WON, WOF, IW, SPARKER, ACO
+@fa[arrow-down]
 
-#### 未在表格上
++++
+@title[GFM]
 
-- IA, DH_1, ISO (皆為內部變數，使用者無需填入)
+#### Use GitHub Flavored Markdown
+#### For Slide Content Creation
 
----
+<br>
 
-# 目前進度
-
----
-
-### 演算法
-
-- 已實做之參數
-	- SD, SFA, SFB, IW, SPARKER
-	- ACO, STD, IA, DH_1, ISO
-- 未實做之參數
-	- IG
-- 還未理解之參數
-	- VW, DVw  (登錄用, 從 Ecode 與 Arcnet 表？)
-	- WON, WOF (值的來源？)
-- ==待提供 Ecode 與 Apack 表==
+The *same syntax* you use to create project   
+**READMEs** and **Wikis** for your Git repos.
 
 ---
 
-### 人機
+## Code Presenting
+## Repo Source Files
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting) for details.</span>
 
+@fa[arrow-down]
 
-:heavy_check_mark: 設定參數位置可顯示表格上新增的**12個**參數。
++++?code=src/go/server.go&lang=golang&title=Source: Golang File
 
-:heavy_multiplication_x: ==**Ecode 和 Apack 表顯示：待提供參數表**==
-
-
----
-
-# 參數說明 與 範例
-
----
-
-#### 原 IA 參數 - 說明
-
-```
-IA = IP - IW/2 是由(D8A_1, D8A_2, DL_1(B))三者所構合成的。
-最小解析度為0.5
-INT(IA/8) 取整數決定D8A_1及D8A_2
-IA - INT(IA/8) * 8 <= 7.5   決定DL_1(B)
-
-```
-* IA 的範圍? IA不在新增參數表格內 ?!
-
-* IP 是什麼?
-* IA = IP - IW/2  是由(D8A_1, D8A_2, DL_1(B))三者所構合成的。
-* 什麼參數最小解析度為 0.5 A? D8A_1, D8A_2, DL_1(B) 都是嗎?
+@[1,3-6](Present code found within any repo source file.)
+@[8-18](Without ever leaving your slideshow.)
+@[19-28](Using GitPitch code-presenting with (optional) annotations.)
 
 ---
+@title[Present Static Block]
 
-#### 原 D8A 參數
+## Code Presenting
+## Static Source Blocks
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting) for details.</span>
 
-![](images/d8a.png) 圖1
-![](images/d8a-setting.png) 圖2
+@fa[arrow-down]
 
-* 沒有說明如何區分 D8A_1, D8A_2
-* D8_* 分代表什麼？
-* 圖2 表格沒有說明下方紅色內容的意思？
++++
+<p><span class="menu-title slide-title">Source: JavaScript Block</span></p>
 
----
+```javascript
+// Include http module.
+var http = require("http");
 
-#### 原 DL_1 參數
-![](images/dl_1.png) 圖1
-![](images/dl_1-setting.png) 圖2
+// Create the server. Function passed as parameter
+// is called on every request made.
+http.createServer(function (request, response) {
+  // Attach listener on end event.  This event is
+  // called when client sent, awaiting response.
+  request.on("end", function () {
+    // Write headers to the response.
+    // HTTP 200 status, Content-Type text/plain.
+    response.writeHead(200, {
+      'Content-Type': 'text/plain'
+    });
+    // Send data and end response.
+    response.end('Hello HTTP!');
+  });
 
-* DL_1 的範圍？
-* DL_1 的值是什麼？
-* D4B, D2B, D1B, D0.5B 與 D4F, D2F, D1F, D0.5F 差別是什麼？
-
----
-
-#### 修改後 IA 參數 - 說明
-
-公式: `IA = IP - IW/2`
-
-- IP 為已有參數 real_il。(可查看先前的程式設計)
-- 計算後的 IA 需填入 ARTNET 表格中的 D8A_1, D8A_2, DL_1(B) 三個參數, 請查看這三個參數的設定說明。
-- D8A_1, D8A_2公式：`D8A = 取整數 (IA / 8)`
-- DL_1(B) 公式： ` DL_1(B) = IA - (D8A * 8)`
-
----
-
-#### 修改後 IA 參數 - 實例
-
-```
-EX(1): IA = 25.5
-D8A = 取整數 (IA / 8) => 3
-DL_1 = IA - (D8A * 8) => 1.5
-
-填入 arcnet 表的數值
-1. D8a_1 = 0x0000 0011 (3), D8A_2 = 0x0000 0000 (0)
-2. DL_1(B) = 0x0011 (3)
-
-EX(2): IA = 2058.5
-D8A = 取整數 (IA / 8) => 257
-DL_1 = IA - (D8A * 8) => 2.5
-
-填入 arcnet 表的數值
-1. D8A_1 = 0x1111 1111 (255), D8A_2 = 0x0000 0010 (2)
-2. DL_1(B) = 0x1111 (15)
+// Listen on the 8080 port.
+}).listen(8080);
 ```
 
----
-
-### 修改後 D8A 參數 - 說明
-
-- D8A_1, D8A_2 參數是由 8 倍數組合而成的 8 位元數。
-- D8A_1 的範圍 0 ~ 255。 (0x0000 0000 ~ 0x 1111 1111)
-- D8A_2 的範圍 0 ~ 15。  (0x0000 0000 ~ 0x 0000 1111)
+@[1,2](You can present code inlined within your slide markdown too.)
+@[9-17](Displayed using code-syntax highlighting just like your IDE.)
+@[19-20](Again, all of this without ever leaving your slideshow.)
 
 ---
+@title[Present GIST]
 
-### 修改後 D8A 參數 - 實例
+## Code Presenting
+## GitHub GIST
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting) for details.</span>
 
-```
-EX(1):
-D8A = 155
-D8A_1 = 0x1001 1011 (155), D8A_2 = 0x0000 0000 (0)
+@fa[arrow-down]
 
-EX(2):
-D8A = 265
-D8A_1 = 0x1111 1111 (255), D8A_2 = 0x0000 1010 (10)
++++?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=Scala&title=Source: Scala GIST
 
-```
+@[23](You can even present code found within any GitHub GIST.)
+@[41-53](GIST source code is beautifully rendered on any slide.)
+@[57-62](Code-presenting works seamlessly both online and offline.)
+
+---
+@title[Embed Images]
+
+## Image Slides
+## [ Inline ]
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Image-Slides) for details.</span>
+
+@fa[arrow-down]
+
++++
+
+#### Make A Visual Statement
+
+<br>
+
+Use inline images to lend   
+a *visual punch* to your slideshow presentations.
+
+
++++
+@title[Private Investocat]
+
+<span style="color:gray; font-size:0.7em">Inline Image at <b>Absolute URL</b></span>
+
+![Image-Absolute](https://d1z75bzl1vljy2.cloudfront.net/kitchen-sink/octocat-privateinvestocat.jpg)
+
+
+<span style="color:gray; font-size: 0.5em;">the <b>Private Investocat</b> by [jeejkang](https://github.com/jeejkang)</span>
+
+
++++
+@title[Octocat De Los Muertos]
+
+<span style="color:gray; font-size:0.7em">Inline Image at GitHub Repo <b>Relative URL</b></span>
+
+![Image-Absolute](assets/octocat-de-los-muertos.jpg)
+
+<span style="color:gray; font-size:0.5em">the <b>Octocat-De-Los-Muertos</b> by [cameronmcefee](https://github.com/cameronmcefee)</span>
+
+
++++
+@title[Daftpunktocat]
+
+<span style="color:gray; font-size:0.7em"><b>Animated GIFs</b> Work Too!</span>
+
+![Image-Relative](https://d1z75bzl1vljy2.cloudfront.net/kitchen-sink/octocat-daftpunkocat.gif)
+
+<span style="color:gray; font-size:0.5em">the <b>Daftpunktocat-Guy</b> by [jeejkang](https://github.com/jeejkang)</span>
+
+---
+@title[Background Images]
+
+## Image Slides
+## [ Background ]
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Image-Slides#background) for details.</span>
+
+@fa[arrow-down]
+
++++
+@title[Bold Statements]
+
+#### Make A Bold Visual Statement
+
+<br>
+
+Use high-resolution background images   
+for *maximum impact*.
+
++++?image=https://d1z75bzl1vljy2.cloudfront.net/kitchen-sink/victory.jpg
+@title[V For Victory]
+
++++?image=https://d1z75bzl1vljy2.cloudfront.net/kitchen-sink/127.jpg
+@title[127.0.0.1]
+
+---
+@title[Embed Video]
+## Video Slides
+## [ Inline ]
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Video-Slides) for details.</span>
+
+@fa[arrow-down]
+
++++
+@title[YouTube, etc]
+
+#### Bring Your Presentations Alive
+
+<br>
+
+Embed *YouTube*, *Vimeo*, *MP4* and *WebM*   
+inline on any slide.
+
++++
+@title[Fresh Guacamole]
+
+![YouTube Video](https://www.youtube.com/embed/dNJdJIwCF_Y)
+
++++
+@title[Gravity]
+
+![Vimeo Video](https://player.vimeo.com/video/125471012)
+
++++
+@title[Big Buck Bunny]
+
+![MP4 Video](http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4)
+
+
+---
+@title[Background Videos]
+
+## Video Slides
+## [ Background ]
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Video-Slides#background) for details.</span>
+
+@fa[arrow-down]
+
++++
+@title[Viewer Experience]
+
+#### Maximize The Viewer Experience
+
+<br>
+
+Go fullscreen with *MP4* and *WebM* videos.
+
++++?video=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
+@title[Big Buck Bunny]
 
 ---
 
-### 修改後 DL_1 參數 - 說明
+## Math Notation Slides
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Math-Notation-Slides) for details.</span>
 
-- DL_1 參數是由 DL_1(B) 與 DL_1(F) 兩個 4 位元數的組合而成。
+@fa[arrow-down]
 
-DL_1(B/F) 表
++++
+@title[Beautiful Math]
 
-|4 Bit    |Bit_3|Bit_2|Bit_1|Bit_0|備註   |
-|---------|-----|-----|-----|-----|------|
-|DL_1(B/F)| 4A  | 2A  | 1A  | 0.5A|電流值 |
+#### Beautiful Math Rendered Beautifully
 
-DL_1 表
+<br>
 
-|8 Bit| 4 Bit   | 4 Bit   |
-|-----|---------|---------|
-|DL_1 | DL_1(B) | DL_1(F) |
+Use *TeX*, *LaTeX* and *MathML* markup   
+powered by [MathJax](https://www.mathjax.org).
+
++++
+@title[Sample]
+
+`$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$`
+
++++
+@title[Sample]
+
+`\begin{align}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + xy
+\end{align}`
+
++++
+@title[Sample]
+
+##### The Cauchy-Schwarz Inequality
+
+`\[
+\left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
+ \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+\]`
+
++++
+@title[Inline Sample]
+
+##### In-line Mathematics
+
+This expression `\(\sqrt{3x-1}+(1+x)^2\)` is an example of an inline equation.
 
 ---
 
-### 修改後 DL_1 參數 - 實例
+## Chart Slides
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Chart-Slides) for details.</span>
 
-```
-EX(1):
+@fa[arrow-down]
 
-DL_1B = 3.5 , DL_1F = 4
-填入 arcnet 表的數值
-DL_1 = 0x0111 1000
-```
++++
+@title[Chart Types]
+
+#### Chart Data Rendered Beautifully
+
+<br>
+
+Use *Bar*, *Line*, *Area*, and *Scatter* charts among many other chart types directly within your markdown, all powered by [Chart.js](http://www.chartjs.org).
+
++++
+@title[Sample Line Chart]
+
+<canvas data-chart="line">
+<!--
+{
+ "data": {
+  "labels": ["January"," February"," March"," April"," May"," June"," July"],
+  "datasets": [
+   {
+    "data":[65,59,80,81,56,55,40],
+    "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
+   },
+   {
+    "data":[28,48,40,19,86,27,90],
+    "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
+   }
+  ]
+ },
+ "options": { "responsive": "true" }
+}
+-->
+</canvas>
+
++++
+@title[Sample Bar Chart]
+
+<canvas class="stretch" data-chart="horizontalBar">
+<!--
+{
+ "data" : {
+  "labels" : ["Grapefruit", "Orange", "Kiwi",
+    "Blackberry", "Banana",
+    "Blueberry"],
+  "datasets" : [{
+    "data": [48, 26, 59, 39, 21, 74],
+    "backgroundColor": "#e49436",
+    "borderColor": "#e49436"
+  }]
+  },
+  "options": {
+    "title": {
+      "display": true,
+      "text": "The most delicious fruit?",
+      "fontColor": "gray",
+      "fontSize": 20
+    },
+    "legend": {
+      "display": false
+    },
+    "scales": {
+      "xAxes": [{
+        "ticks": {
+            "beginAtZero": true,
+            "max": 80,
+            "stepSize": 10,
+            "fontColor": "gray"
+        },
+        "scaleLabel": {
+          "display": true,
+          "labelString": "Respondents",
+          "fontColor": "gray"
+        }
+      }],
+      "yAxes": [{
+        "ticks": {
+            "fontColor": "gray"
+        }
+      }]
+    }
+  }
+}
+-->
+</canvas>
 
 ---
 
-# 希望可以提供資料
+## Slide Fragments
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Fragment-Slides) for details.</span>
 
-- ==參數說明== 與 ==範例== 可以再更仔細。
-- 實際給定的參數與其演算實例。
-	`(使用者 -> 演算法過程 -> artnet 表的數值 )`
-- 重新說明可以讓使用者修改的參數。
-- 要顯示給使用者的參數？
-- 是否還有缺少的參數？
+@fa[arrow-down]
+
++++
+
+#### Reveal Slide Concepts Piecemeal
+@title[Piecemeal Concepts]
+
+<br>
+
+Step through slide content in sequence   
+to *slowly reveal* the bigger picture.
+
++++
+@title[Piecemeal Lists]
+
+- Java
+- Groovy |
+- Kotlin |
+- Scala  |
+- The JVM rocks! |
+
++++
+@title[Piecemeal Tables]
+
+<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>25</td>
+  </tr>
+  <tr class="fragment">
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+  <tr class="fragment">
+    <td>John</td>
+    <td>Doe</td>
+    <td>43</td>
+  </tr>
+</table>
+
+---
+## <span style="text-transform: none">PITCHME.yaml</span> Settings
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings) for details.</span>
+
+@fa[arrow-down]
+
++++
+@title[Custom Look and Feel]
+
+#### Stamp Your Own Look and Feel
+
+<br>
+
+Set a default theme, custom logo, custom css, background image, and preferred code syntax highlighting style.
+
++++
+@title[Custom Behavior]
+
+#### Customize Slideshow Behavior
+
+<br>
+
+Enable auto-slide with custom slide intervals, presentation looping, and RTL flow.
+
+
+---
+@title[Keyboard Controls]
+## Slideshow Keyboard Controls
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Fullscreen-Mode) for details.</span>
+
+@fa[arrow-down]
+
++++
+@title[Try Out Now!]
+
+#### Try Out These Great Features Now!
+
+<br>
+
+| Mode | On Key | Off Key |
+| ---- | :------: | :--------: |
+| Fullscreen | F |  Esc |
+| Overview | O |  O |
+| Blackout | B |  B |
+| Help | ? |  Esc |
+
 
 ---
 
-# 下一步進度
+## GitPitch Social
+<span style="font-size:0.6em; color:gray">Press Down key for examples.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Slideshow-GitHub-Badge) for details.</span>
 
-- 用實際演算例證，檢驗已完成的演算法正確性。
-- 使用模擬機台測試 ==已實做之參數==
-- 人機 Ecode table 與 Apack table 可顯示新電源參數。
+@fa[arrow-down]
+
++++
+@title[Designed For Sharing]
+
+#### Slideshows Designed For Sharing
+
+<br>
+
+- View any slideshow at its public URL
+- [Promote](https://github.com/gitpitch/gitpitch/wiki/Slideshow-GitHub-Badge) any slideshow using a GitHub badge
+- [Embed](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Embedding) any slideshow within a blog or website
+- [Share](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Sharing) any slideshow on Twitter, LinkedIn, etc
+- [Print](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Printing) any slideshow as a PDF document
+- [Download and present](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Offline) any slideshow offline
 
 ---
+@title[Get The Word Out!]
 
-# Thanks :smiley:
-
-##### [Mapacode INC](mapacode.tw)
-
-###### Software Engineer: Alvis Lu
+## GO FOR IT.
+## JUST ADD <span style="color:#e49436; text-transform: none">PITCHME.md</span> ;)
