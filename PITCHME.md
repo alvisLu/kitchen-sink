@@ -8,23 +8,21 @@
 
 ---
 
-### 新增參數
-#### 在表格上
+#### 新增參數
+- 在表格上
+    - VW, DVw, STD, SFA, SFB, IG
+    - SD, WON, WOF, IW, SPARKER, ACO
 
-- VW, DVw, STD, SFA, SFB, IG
-- SD, WON, WOF, IW, SPARKER, ACO
-
-#### 未在表格上
-
-- IA, DH_1, ISO (皆為內部變數，使用者無需填入)
+- 未在表格上
+    - IA, DH_1, ISO (皆為內部變數，使用者無需填入)
 
 ---
 
-# 目前進度
+## 目前進度
 
 ---
 
-### 演算法
+#### 演算法
 
 - 已實做之參數
 	- SD, SFA, SFB, IW, SPARKER
@@ -38,14 +36,14 @@
 
 ---
 
-### 人機
+#### 人機
 
 - 設定參數位置可顯示表格上新增的**12個**參數。
 - <span style="color:#e49436">Ecode 和 Apack 表顯示：待提供參數表</span>
 
 ---
 
-# 更仔細的 <span style="color:#e49436">參數說明</span> 與 <span style="color:#e49436">範例</span>
+### 更仔細的 <span style="color:#e49436">參數說明</span> 與 <span style="color:#e49436">範例</span>
 
 ---
 
@@ -184,7 +182,7 @@ DL_1 = 0x0111 1000
 
 - <span style="color:#e49436">參數說明</span> 與 <span style="color:#e49436">範例</span> 可以再更仔細。
 - 實際給定的參數與其演算實例。
-	`(使用者 -> 演算法過程 -> artnet 表的數值 )`
+	`(使用者/內部參數 -> 演算法過程 -> artnet 表的數值 )`
 - 重新說明可以讓使用者修改的參數。
 - 要顯示給使用者的參數？
 - 是否還有缺少的參數？
@@ -199,7 +197,7 @@ DL_1 = 0x0111 1000
 
 ---
 
-# Thanks :smiley:
+# Thanks ![image-github](https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png)
 
 ##### [Mapacode INC](mapacode.tw)
 
