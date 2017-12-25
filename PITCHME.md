@@ -201,9 +201,7 @@ DL_1 = 0x0111 1000
 
 ---
 
-# Thanks !
-
-![image-github](https://tctechcrunch2011.files.wordpress.com/2010/07/github-logo.png?w=100)
+# Thanks ! ![image-github](https://tctechcrunch2011.files.wordpress.com/2010/07/github-logo.png?w=100)
 
 ##### [Mapacode INC](mapacode.tw)
 
