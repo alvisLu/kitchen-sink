@@ -8,7 +8,7 @@
 
 ---
 
-#### 新增參數
+### 新增參數
 - <span style="color:#42affa">在表格上</span>
     - VW, DVw, STD, SFA, SFB, IG
     - SD, WON, WOF, IW, SPARKER, ACO
@@ -22,7 +22,7 @@
 
 ---
 
-#### 演算法
+### 演算法
 
 - <span style="color:#42affa">已實做之參數</span>
 	- SD, SFA, SFB, IW, SPARKER
@@ -36,14 +36,14 @@
 
 ---
 
-#### 人機
+### 人機
 
 - 設定參數位置可顯示表格上新增的**12個**參數。
 - <span style="color:#e49436">Ecode 和 Apack 表顯示：待提供參數表</span>
 
 ---
 
-### 更仔細的 <span style="color:#e49436">參數說明</span> 與 <span style="color:#e49436">範例</span>
+## 更仔細的 <span style="color:#e49436">參數說明</span> 與 <span style="color:#e49436">範例</span>
 
 ---
 
@@ -74,8 +74,11 @@ IA - INT(IA/8) * 8 <= 7.5   決定DL_1(B)
 
 - IP 為已有參數 real_il。(可查看先前的程式設計)
 - 計算後的 IA 需填入 ARTNET 表格中的 D8A_1, D8A_2, DL_1(B) 三個參數, 請查看這三個參數的設定說明。
-- D8A_1, D8A_2公式：`D8A = 取整數 (IA / 8)`
-- DL_1(B) 公式： ` DL_1(B) = IA - (D8A * 8)`
+
+```
+D8A_1, D8A_2 公式：D8A = 取整數 (IA / 8)
+DL_1(B) 公式： DL_1(B) = IA - (D8A * 8)
+```
 
 +++
 
@@ -198,7 +201,9 @@ DL_1 = 0x0111 1000
 
 ---
 
-# Thanks ![image-github](https://tctechcrunch2011.files.wordpress.com/2010/07/github-logo.png?w=200)
+# Thanks !
+
+![image-github](https://tctechcrunch2011.files.wordpress.com/2010/07/github-logo.png?w=100)
 
 ##### [Mapacode INC](mapacode.tw)
 
