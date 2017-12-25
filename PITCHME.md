@@ -9,11 +9,11 @@
 ---
 
 #### 新增參數
-- 在表格上
+- <span style="color:#265599">在表格上</span>
     - VW, DVw, STD, SFA, SFB, IG
     - SD, WON, WOF, IW, SPARKER, ACO
 
-- 未在表格上
+- <span style="color:#265599">未在表格上</span>
     - IA, DH_1, ISO (皆為內部變數，使用者無需填入)
 
 ---
@@ -24,12 +24,12 @@
 
 #### 演算法
 
-- 已實做之參數
+- <span style="color:#265599">已實做之參數</span>
 	- SD, SFA, SFB, IW, SPARKER
 	- ACO, STD, IA, DH_1, ISO
-- 未實做之參數
+- <span style="color:#265599">未實做之參數</span>
 	- IG
-- 還未理解之參數
+- <span style="color:#265599">還未理解之參數</span>
 	- VW, DVw  (登錄用, 從 Ecode 與 Arcnet 表？)
 	- WON, WOF (值的來源？)
 - <span style="color:#e49436">待提供 Ecode 與 Apack 表</span>
@@ -56,12 +56,11 @@ INT(IA/8) 取整數決定D8A_1及D8A_2
 IA - INT(IA/8) * 8 <= 7.5   決定DL_1(B)
 
 ```
-* IA 的範圍? IA不在新增參數表格內 ?!
 
+* IA 的範圍? IA不在新增參數表格內 ?!
 * IP 是什麼?
 * IA = IP - IW/2  是由(D8A_1, D8A_2, DL_1(B))三者所構合成的。
 * 什麼參數最小解析度為 0.5 A? D8A_1, D8A_2, DL_1(B) 都是嗎?
-
 
 @fa[arrow-down]
 
@@ -69,7 +68,9 @@ IA - INT(IA/8) * 8 <= 7.5   決定DL_1(B)
 
 #### 修改後 IA 參數 - 說明
 
-公式: `IA = IP - IW/2`
+```
+公式: IA = IP - IW/2
+```
 
 - IP 為已有參數 real_il。(可查看先前的程式設計)
 - 計算後的 IA 需填入 ARTNET 表格中的 D8A_1, D8A_2, DL_1(B) 三個參數, 請查看這三個參數的設定說明。
@@ -152,13 +153,13 @@ D8A_1 = 0x1111 1111 (255), D8A_2 = 0x0000 1010 (10)
 
 - DL_1 參數是由 DL_1(B) 與 DL_1(F) 兩個 4 位元數的組合而成。
 
-DL_1(B/F) 表
+- DL_1(B/F) 表
 
 |4 Bit    |Bit_3|Bit_2|Bit_1|Bit_0|備註   |
 |---------|-----|-----|-----|-----|------|
 |DL_1(B/F)| 4A  | 2A  | 1A  | 0.5A|電流值 |
 
-DL_1 表
+- DL_1 表
 
 |8 Bit| 4 Bit   | 4 Bit   |
 |-----|---------|---------|
@@ -178,7 +179,7 @@ DL_1 = 0x0111 1000
 
 ---
 
-# 希望可以提供資料
+## 希望可以提供資料
 
 - <span style="color:#e49436">參數說明</span> 與 <span style="color:#e49436">範例</span> 可以再更仔細。
 - 實際給定的參數與其演算實例。
@@ -189,7 +190,7 @@ DL_1 = 0x0111 1000
 
 ---
 
-# 下一步進度
+## 下一步進度
 
 - 用實際演算例證，檢驗已完成的演算法正確性。
 - 使用模擬機台測試 <span style="color:#e49436">已實做之參數</span>
@@ -197,7 +198,7 @@ DL_1 = 0x0111 1000
 
 ---
 
-# Thanks ![image-github](https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png)
+# Thanks ![image-github](https://tctechcrunch2011.files.wordpress.com/2010/07/github-logo.png?w=400)
 
 ##### [Mapacode INC](mapacode.tw)
 
