@@ -9,11 +9,11 @@
 ---
 
 #### 新增參數
-- <span style="color:#265599">在表格上</span>
+- <span style="color:#42affa">在表格上</span>
     - VW, DVw, STD, SFA, SFB, IG
     - SD, WON, WOF, IW, SPARKER, ACO
 
-- <span style="color:#265599">未在表格上</span>
+- <span style="color:#42affa">未在表格上</span>
     - IA, DH_1, ISO (皆為內部變數，使用者無需填入)
 
 ---
@@ -24,12 +24,12 @@
 
 #### 演算法
 
-- <span style="color:#265599">已實做之參數</span>
+- <span style="color:#42affa">已實做之參數</span>
 	- SD, SFA, SFB, IW, SPARKER
 	- ACO, STD, IA, DH_1, ISO
-- <span style="color:#265599">未實做之參數</span>
+- <span style="color:#42affa">未實做之參數</span>
 	- IG
-- <span style="color:#265599">還未理解之參數</span>
+- <span style="color:#42affa">還未理解之參數</span>
 	- VW, DVw  (登錄用, 從 Ecode 與 Arcnet 表？)
 	- WON, WOF (值的來源？)
 - <span style="color:#e49436">待提供 Ecode 與 Apack 表</span>
@@ -198,7 +198,7 @@ DL_1 = 0x0111 1000
 
 ---
 
-# Thanks ![image-github](https://tctechcrunch2011.files.wordpress.com/2010/07/github-logo.png?w=400)
+# Thanks ![image-github](https://tctechcrunch2011.files.wordpress.com/2010/07/github-logo.png?w=200)
 
 ##### [Mapacode INC](mapacode.tw)
 
